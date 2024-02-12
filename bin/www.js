@@ -34,7 +34,18 @@ const app = require('../app')(config);
 const sequelizeConfig = config[process.env.NODE_ENV || 'development'];
 
 // Create a Sequelize instance using the appropriate configuration
-const sequelize = new Sequelize(sequelizeConfig);
+// const sequelize = new Sequelize(sequelizeConfig);
+
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
+})
 
 function connectToDatabase() {
     sequelize.authenticate().then(() => {
