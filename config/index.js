@@ -20,26 +20,23 @@ const getLogger = (serviceName, serviceVersion, level) => bunyan.createLogger({ 
 
 // Configuration options for different environments
 module.exports = {
-  development: {
-    name,
-    version,
-    serviceTimeout: 30,
-    postgres: {
-        options: {
-            host: 'localhost',
-            port: 5432,
-            database: 'dev',
-            dialect: 'postgres',
-            username: 'postgres',
-            password: 'admin'
-        },
-        client: null
+development: {
+    client: "sqlite3",
+    dialect: 'sqlite',
+    useNullAsDefault: true,
+    connection: {
+        filename: "./data/lessons.db3"
     },
-    log: () => getLogger(name, version, 'debug'),
+    pool: {
+        afterCreate: (conn, done) => {
+            conn.run("PRAGMA foreign_keys = ON", done);
+        },
+    },
   },
   production: {
     client: "pg",
-    connections: process.env.DATABASE_URL,
+    dialect: 'postgres',
+    connection: process.env.DATABASE_URL,
     pool: {
         min: 2,
         max: 10,

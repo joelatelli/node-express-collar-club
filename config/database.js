@@ -2,11 +2,16 @@ const config = require('./index');
 
 module.exports = {
   development: {
-    storage: config.dbFile,
-    dialect: "sqlite",
-    seederStorage: "sequelize",
-    logQueryParameters: true,
-    typeValidation: true
+    client: "sqlite3",
+    useNullAsDefailt: true,
+    connection: {
+        filename: "./data/lessons.db3"
+    },
+    pool: {
+        afterCreate: (con, done) => {
+            con.run("PRAGMA foreign_keys = ON", done);
+        },
+    },
   },
   production: {
     use_env_variable: 'DATABASE_URL',
