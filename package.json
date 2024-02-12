@@ -4,13 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "sequelize": "sequelize",
-    "sequelize-cli": "sequelize-cli",
-    "start": "node server.js",
-    "start:development": "nodemon server.js",
-    "start:production": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
