@@ -24,6 +24,17 @@ module.exports = {
     name,
     version,
     serviceTimeout: 30,
+    postgres: {
+        options: {
+            host: 'localhost',
+            port: 5432,
+            database: 'dev',
+            dialect: 'postgres',
+            username: 'postgres',
+            password: 'admin'
+        },
+        client: null
+    },
     log: () => getLogger(name, version, 'debug'),
   },
   production: {
