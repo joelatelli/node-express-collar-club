@@ -24,7 +24,7 @@
 //     });
 
 const http = require('http');
-const Sequelize = require('sequilize');
+const Sequelize = require('sequelize');
 
 const config = require('../config')[process.env.NODE_ENV || 'development'];
 
@@ -35,7 +35,7 @@ async function connectToPostgres() {
     const sequilize = new Sequelize(config.postgres.options);
     try {
         await sequilize.authenticate();
-        log.info('Coonnection has been established successfully.');
+        log.info('Connection has been established successfully.');
         return sequilize
     } catch (error) {
         log.error('Unable to coonnect to the database:', error);
