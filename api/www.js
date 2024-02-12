@@ -2,10 +2,10 @@
 
 // Import environemnt variables
 require('dotenv').config();
-const { port } = require('../config');
-const { app, http} = require('../app');
-const db = require('../db/models');
-const establishWebSocket = require('../utils/websockets')
+const { port } = require('./config');
+const { app, http} = require('./app');
+const db = require('./db/models');
+const establishWebSocket = require('./utils/websockets')
 
 // Web Sockets
 establishWebSocket(http)
