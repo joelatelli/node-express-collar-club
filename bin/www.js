@@ -31,18 +31,37 @@ const config = require('../config')[process.env.NODE_ENV || 'development'];
 const log = config.log();
 const app = require('../app')(config);
 
-async function connectToPostgres() {
-    const sequilize = new Sequelize(config.postgres.options);
-    try {
-        await sequilize.authenticate();
-        log.info('Connection has been established successfully.');
-        return sequilize
-    } catch (error) {
-        log.error('Unable to coonnect to the database:', error);
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false
+      }
     }
-}
+  }
+);
 
-config.postgres.client = connectToPostgres();
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+// async function connectToPostgres() {
+//     const sequilize = new Sequelize(config.postgres.options);
+//     try {
+//         await sequilize.authenticate();
+//         log.info('Connection has been established successfully.');
+//         return sequilize
+//     } catch (error) {
+//         log.error('Unable to connect to the database:', error);
+//     }
+// }
+
+// config.postgres.client = connectToPostgres();
 
 const server = http.createServer(app);
 
