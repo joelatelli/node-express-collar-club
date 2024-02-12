@@ -14,6 +14,12 @@ module.exports = (sequelize, DataTypes) => {
         sourceKey: 'id'
       })
 
+      User.hasOne(models.UserSettings, {
+        onDelete: 'CASCADE',
+        foreignKey: 'userId',
+        sourceKey: 'id'
+      })
+
     }
   }
 

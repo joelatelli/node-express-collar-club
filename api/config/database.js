@@ -14,7 +14,7 @@ module.exports = {
     seederStorage: 'sequelize',
     dialectOptions: {
       ssl: {
-        require: true,
+        require:false,
         rejectUnauthorized: false
       }
     },
@@ -22,4 +22,11 @@ module.exports = {
       schema: process.env.SCHEMA
     }
   }
+//   production: {
+//     username: DB_USERNAME_PROD,
+//     password: DB_PASSWORD_PROD,
+//     database: DB_NAME_PROD,
+//     host: DB_HOST_PROD,
+//     dialect: 'postgres',
+//   },
 };
