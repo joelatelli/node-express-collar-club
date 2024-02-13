@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli",
+    "start": "node ./bin/www",
+    "migrate": "npx dotenv sequelize db:migrate",
+    "migrate-undo": "npx dotenv sequelize db:migrate:undo:all"
   },
   "repository": {
     "type": "git",
