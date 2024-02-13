@@ -66,7 +66,7 @@ module.exports = (params) => {
         res.send('Home Page');
     });
 
-    outer.use('/product', productsRoute(params.productService));
+    router.use('/product', productsRoute(params.productService));
 
     return router;
 };

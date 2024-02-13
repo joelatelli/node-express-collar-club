@@ -8,7 +8,7 @@ const ProductService = require('./services/ProductService');
 module.exports = (config) => {
 //   const log = config.log();
 
-  const productService = new ProductService();
+const productService = new ProductService();
 
   // Add a request logging middleware in development mode
   if (app.get('env') === 'development') {
@@ -18,9 +18,9 @@ module.exports = (config) => {
     });
   }
   
-  // Connect app to routes
-//   app.use(routes)
-  app.use('/', routes({productService}));
+  app.use(routes)
+
+//   app.use('/', routes({productService}));
   
   // eslint-disable-next-line no-unused-vars
   app.use((error, req, res, next) => {
