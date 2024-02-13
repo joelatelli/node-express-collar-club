@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const authRouter = require('./auth.js');
-const settingsRouter = require('./settings.js')
-const userRouter = require('./users.js');
-const likeRouter = require('./likes.js')
+const productsRouter = require('./products.js')
 
 const { restoreUser } = require('../../utils/jwt.js');
 
@@ -12,13 +10,6 @@ const { restoreUser } = require('../../utils/jwt.js');
 router.use(restoreUser)
 
 router.use('/auth', authRouter);
-
-router.use('/settings', settingsRouter)
-
-router.use('/users', userRouter);
-
-router.use('/likes', likeRouter);
-
-
+router.use('/products', productsRouter);
 
 module.exports = router;

@@ -53,15 +53,20 @@
 const express = require('express');
 const router = express.Router();
 
+// new
+const apiRouter = require('./api')
+
 const productsRoute = require('./products');
 
 module.exports = (params) => {
 
-  router.get('/', (req, res) => {
-    res.send('Home Page');
-  });
+    router.use('/api', apiRouter)
 
-  router.use('/product', productsRoute(params.productService));
+    router.get('/', (req, res) => {
+        res.send('Home Page');
+    });
 
-  return router;
+    outer.use('/product', productsRoute(params.productService));
+
+    return router;
 };
