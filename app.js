@@ -18,9 +18,9 @@ const productService = new ProductService();
     });
   }
   
-  app.use(routes)
+//   app.use(routes)
 
-//   app.use('/', routes({productService}));
+  app.use('/', routes({productService}));
   
   // eslint-disable-next-line no-unused-vars
   app.use((error, req, res, next) => {
