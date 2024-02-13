@@ -1,8 +1,8 @@
-// const express = require("express");
-// const router = express.Router();
-// const apiRouter = require('./api')
+const express = require("express");
+const router = express.Router();
+const apiRouter = require('./api')
 
-// // Add a XSRF-Token cookie
+// Add a XSRF-Token cookie
 // router.get('/api/csrf/restore', (req, res) => {
 //     const csrfToken = req.csrfToken();
 //     res.cookie("XSRF-TOKEN", csrfToken);
@@ -40,33 +40,34 @@
 //       res.cookie('XSRF-TOKEN', req.csrfToken());
 //       return res.json({});
 //     });
-//   }
+// }
+
+
+router.use('/api', apiRouter)
+
+
+module.exports = router;
 
 
 
 
-// router.use('/api', apiRouter)
+// const express = require('express');
+// const router = express.Router();
 
+// // new
+// // const apiRouter = require('./api')
 
-// module.exports = router;
+// const productsRoute = require('./products');
 
-const express = require('express');
-const router = express.Router();
+// module.exports = (params) => {
 
-// new
-// const apiRouter = require('./api')
+//     // router.use('/api', apiRouter)
 
-const productsRoute = require('./products');
+//     router.get('/', (req, res) => {
+//         res.send('Home Page');
+//     });
 
-module.exports = (params) => {
+//     router.use('/product', productsRoute(params.productService));
 
-    // router.use('/api', apiRouter)
-
-    router.get('/', (req, res) => {
-        res.send('Home Page');
-    });
-
-    router.use('/product', productsRoute(params.productService));
-
-    return router;
-};
+//     return router;
+// };
