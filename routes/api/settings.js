@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { PlayerSettings } = require('../../models');
+const { PlayerSettings } = require('../../db/models');
 const { requireAuth } = require('../../utils/auth');
 const { settingsNotFound } =require('./constants/responseMessages')
 

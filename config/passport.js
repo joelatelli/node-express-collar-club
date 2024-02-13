@@ -2,7 +2,7 @@ const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const AppleStrategy = require('passport-apple');
 const { v4: uuidv4 } = require('uuid');
-const { User, UserSettings } = require('../models');
+const { User, UserSettings } = require('../db/models');
 const bcrypt = require('bcryptjs')
 const isProduction = process.env.NODE_ENV === 'production';
 

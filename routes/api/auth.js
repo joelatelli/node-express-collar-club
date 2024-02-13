@@ -4,7 +4,7 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs')
 const { setTokenCookie } = require('../../utils/jwt')
 const { validateLogin } = require('./validation/expressValidations');
-const { Player } = require('../../models');
+const { Player } = require('../../db/models');
 const isProduction = process.env.NODEENV === 'production'
 const failRedirect = isProduction ? `https://linkup-api-jw4b.onrender.com/sign-in` : 'http://localhost:3000/sign-in'
 const successRedirect = isProduction ? `https://linkup-api-jw4b.onrender.com/enable-location` : 'http://localhost:3000/enable-location'

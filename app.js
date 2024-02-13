@@ -18,7 +18,9 @@ module.exports = (config) => {
     });
   }
   
-  app.use('/', routes({productService}));
+  // Connect app to routes
+  app.use(routes)
+//   app.use('/', routes({productService}));
   
   // eslint-disable-next-line no-unused-vars
   app.use((error, req, res, next) => {
