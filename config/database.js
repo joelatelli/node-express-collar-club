@@ -22,9 +22,6 @@ module.exports = {
         require:false,
         rejectUnauthorized: false
       }
-    },
-    define: {
-      schema: process.env.SCHEMA
     }
   }
 };
