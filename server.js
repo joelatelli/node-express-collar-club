@@ -12,12 +12,24 @@ app.use(express.static("public"));
 require("./routes/HTMLroutes")(app);
 require("./routes/APIroutes")(app);
 
-db.sequelize.sync().then(() => {
-  app.listen(PORT, () => {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
+db.sequelize
+    .authenticate()
+    .then(() => {
+        console.log('Database connection success! Sequelize is ready to use...');
+        app.listen(PORT, () => console.log(`Listening on port ${PORT}...`)) // Listen for connections
+        // http.listen(3030, () => console.log('Web Socket server listening on...'))
+    })
+    .catch(error => {
+        console.log('Database connection failure.');
+        console.error(error)
+    });
+
+// db.sequelize.sync().then(() => {
+//   app.listen(PORT, () => {
+//     console.log(
+//       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
+//       PORT,
+//       PORT
+//     );
+//   });
+// });
