@@ -14,14 +14,21 @@ module.exports = {
     },
   },
   production: {
-    use_env_variable: 'DATABASE_URL',
+    username: process.env.PROD_DB_USERNAME,
+    password: process.env.PROD_DB_PASSWORD,
+    database: process.env.PROD_DB_NAME,
+    host: process.env.PROD_DB_HOSTNAME,
+    port: process.env.PROD_DB_PORT,
     dialect: 'postgres',
-    seederStorage: 'sequelize',
     dialectOptions: {
-      ssl: {
-        require:false,
-        rejectUnauthorized: false
-      }
+        ssl: {
+          require:false,
+          rejectUnauthorized: false
+        }
+    },
+    pool: {
+        min: 2,
+        max: 10,
     }
   }
 };

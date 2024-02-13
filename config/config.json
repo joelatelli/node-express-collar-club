@@ -11,10 +11,13 @@
       "dialect": "mysql"
     },
     "production": {
-      "username": "postgres_user",
-      "password": "password",
-      "database": "database_name",
-      "host": "localhost",
-      "dialect": "postgres"
+        "use_env_variable": "DATABASE_URL",
+        "dialect": "postgres",
+        "dialectOptions": {
+           "ssl": {
+             "require": true,
+             "rejectUnauthorized": false
+           }
+        }
     }
 }
