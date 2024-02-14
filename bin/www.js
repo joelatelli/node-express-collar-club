@@ -76,9 +76,9 @@ function connectToPostgres() {
 }
 
 const postgresClient = connectToPostgres();
-config.postgres.client = postgresClient;
+// config.postgres.client = postgresClient;
 
-const app = App(config);
+const app = App(postgresClient);
 const port = process.env.PORT || "3000";
 app.set("port", port);
 const server = http.createServer(app);
