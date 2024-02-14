@@ -71,12 +71,14 @@ const getUsers = async (payload) => {
   // const sortByField = allowedSortFields.includes(payload.sortBy)
   //   ? payload.sortBy
   //   : 'username';
-  const { limit, offset } = pagination(payload.page, payload.limit);
-  const users = await User.findAll({
-    order: [[payload.sortBy, 'ASC']],
-    limit,
-    offset,
-  });
+  
+  // const { limit, offset } = pagination(payload.page, payload.limit);
+  // const users = await User.findAll({
+  //   order: [[payload.sortBy, 'ASC']],
+  //   limit,
+  //   offset,
+  // });
+  const users = await User.findAll()
   return users;
 };
 
