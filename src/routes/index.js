@@ -14,15 +14,15 @@ const defaultRoutes = [
   },
   {
     path: '/products',
-    route: require('./products.routes'),
+    route: require('./product.routes'),
   },
   {
     path: '/events',
-    route: require('./events.routes'),
+    route: require('./event.routes'),
   },
   {
     path: '/profiles',
-    route: require('./profiles.routes'),
+    route: require('./profile.routes'),
   },
 ];
 
