@@ -73,11 +73,6 @@ const getUsers = async (payload) => {
   //   : 'username';
   const { limit, offset } = pagination(payload.page, payload.limit);
   const users = await User.findAll({
-    where: {
-      username: {
-        [Op.iLike]: `%${payload.search}%`,
-      },
-    },
     order: [[payload.sortBy, 'ASC']],
     limit,
     offset,

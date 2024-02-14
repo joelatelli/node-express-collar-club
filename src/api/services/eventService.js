@@ -26,7 +26,6 @@ const createNewEvent = async (payload) => {
 //   }
   const event = await Event.create(payload);
   return event;
-  
 };
 
 const getEvents = async (payload) => {
