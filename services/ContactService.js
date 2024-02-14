@@ -1,4 +1,4 @@
-const Models = require('../models/sequelize');
+const Models = require('../models');
 
 class ContactService {
 
