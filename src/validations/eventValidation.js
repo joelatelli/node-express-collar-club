@@ -10,7 +10,8 @@ const createEvent = {
     long: Joi.number(),
     private: Joi.boolean().required(),
     startDate: Joi.string().required(),
-    endDate: Joi.string().required()
+    endDate: Joi.string().required(),
+    userId: Joi.string().required()
   }),
 };
 

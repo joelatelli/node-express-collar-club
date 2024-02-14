@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
-
+  
   Event.init(
     {
       id: {
