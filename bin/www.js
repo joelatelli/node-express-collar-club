@@ -51,7 +51,6 @@ const Sequelize = require('sequelize');
 
 const config = require('../config')[process.env.NODE_ENV || 'development'];
 
-const log = config.log();
 const App = require('../app')
 
 const sequelize = new Sequelize(process.env.DATABASE_URL, {
@@ -67,9 +66,9 @@ const sequelize = new Sequelize(process.env.DATABASE_URL, {
 
 function connectToPostgres() {
   sequelize.authenticate().then(() => {
-    log.info('Connection has been established successfully.');      
+    console.log('Connection has been established successfully.');      
   }).catch((error) => {
-    log.error('Unable to connect to the database:', error);
+    console.log('Unable to connect to the database:', error);
     process.exit(1);
   });
 
@@ -93,11 +92,11 @@ function onError(error) {
   // handle specific listen errors with friendly messages
   switch (error.code) {
     case "EACCES":
-      log.error(`${bind} requires elevated privileges`);
+        console.log(`${bind} requires elevated privileges`);
       process.exit(1);
       break;
     case "EADDRINUSE":
-      log.error(`${bind} is already in use`);
+        console.log(`${bind} is already in use`);
       process.exit(1);
       break;
     default:
@@ -107,7 +106,7 @@ function onError(error) {
 
 server.on("error", onError);
 server.on('listening', () => {
-  log.info(
+    console.log(
     `Hi there! I'm listening on port ${server.address().port} in ${app.get('env')} mode.`,
   );
 });
