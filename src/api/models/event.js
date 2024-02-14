@@ -1,6 +1,15 @@
 const { Model, Sequelize } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
+  class User extends Model {
+    static associate(models) {
+      this.belongsTo(models.User, {
+        foreignKey: 'userId',
+        as: 'user',
+        targetKey: 'id',
+      });
+    }
+  }
 
   Event.init(
     {
