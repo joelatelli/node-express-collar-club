@@ -107,7 +107,7 @@ function onError(error) {
 server.on("error", onError);
 server.on('listening', () => {
     console.log(
-    `Hi there! I'm listening on port ${server.address().port} in ${app.get('env')} mode.`,
+    `My guyyy! I'm listening on port ${server.address().port} in ${app.get('env')} mode.`,
   );
 });
 

@@ -1,20 +1,38 @@
+// const express = require('express');
+// const router = express.Router();
+
+// // new
+// const apiRouter = require('./api')
+
+// const productsRoute = require('./products');
+
+// module.exports = (params) => {
+
+//     router.use('/api', apiRouter)
+
+//     router.get('/', (req, res) => {
+//         res.send('Home Page');
+//     });
+
+//     router.use('/product', productsRoute(params.productService));
+
+//     return router;
+// };
+
 const express = require('express');
 const router = express.Router();
 
-// new
-const apiRouter = require('./api')
+const usersRoute = require('./users');
+const tweetsRoute = require('./tweets');
 
-const productsRoute = require('./products');
+module.exports = (config) => {
 
-module.exports = (params) => {
+  router.get('/', (req, res) => {
+    res.send('Home Page');
+  });
 
-    router.use('/api', apiRouter)
+  router.use('/user', usersRoute(config));
+  router.use('/tweet', tweetsRoute(config));
 
-    router.get('/', (req, res) => {
-        res.send('Home Page');
-    });
-
-    router.use('/product', productsRoute(params.productService));
-
-    return router;
+  return router;
 };
