@@ -7,7 +7,7 @@ const router = express.Router();
 router.get('/', validate(profileValidation.getProfiles), profileController.getProfiles);
 router.get('/:profileId', validate(profileValidation.getProfile), profileController.getProfile);
 
-router.post('/', validate(profileValidation.createProfile), profileController.postProfile);
+router.post('/', validate(profileValidation.createProfile), profileController.createProfile);
 
 router.put('/:profileId', validate(profileValidation.updateProfile), profileController.updateProfile);
 
