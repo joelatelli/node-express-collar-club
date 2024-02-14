@@ -2,8 +2,14 @@ const { successResponse } = require('../../utils/apiResponse');
 const asyncWrapper = require('../../middlewares/asyncHandler');
 const { productService } = require('../services');
 
+
+const createProduct = asyncWrapper(async (req, res, next) => {
+    const product = await productService.createNewProduct(req.body);
+    return successResponse(res, statusCode.CREATED, product, 'Product Created Successfully');
+});
+
 const getProducts = asyncWrapper(async (req, res, next) => {
-  const products = await productService.getProduct(req.query);
+  const products = await productService.getProducts(req.query);
   return successResponse(res, 200, products, 'Product Retrieved Successfully');
 });
 
@@ -26,6 +32,7 @@ const deleteProduct = asyncWrapper(async (req, res, next) => {
 });
 
 module.exports = {
+  createProduct,
   getProducts,
   getProduct,
   updateProduct,
