@@ -18,6 +18,10 @@ defaultRoutes.forEach((route) => {
   router.use(route.path, route.route);
 });
 
+router.get('/', (req, res) => {
+    res.send('Home Page');
+});
+
 if (config.env === environment.DEVELOPMENT || config.env === environment.TEST) {
   router.use('/test-server', (req, res, next) => {
     res.status(200).json({
