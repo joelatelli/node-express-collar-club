@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 const routes = require('./routes');
 
-const ProductService = require('./services/ProductService');
+// const ProductService = require('./services/ProductService');
 
 module.exports = (config) => {
 //   const log = config.log();
 
-const productService = new ProductService();
+// const productService = new ProductService();
 
   // Add a request logging middleware in development mode
   if (app.get('env') === 'development') {
@@ -20,7 +20,8 @@ const productService = new ProductService();
   
 //   app.use(routes)
 
-  app.use('/', routes({productService}));
+//   app.use('/', routes({productService}));
+  app.use('/', routes(config));
   
   // eslint-disable-next-line no-unused-vars
   app.use((error, req, res, next) => {
