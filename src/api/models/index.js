@@ -14,7 +14,17 @@ const dbOptions = {
 let db = {};
 let sequelize;
 
-sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbOptions);
+// sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbOptions);
+sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    }
+});
 
 fs.readdirSync(__dirname)
   .filter((file) => {
