@@ -1,50 +1,23 @@
 'use strict';
-const { Model, Validator, Op, fn, col } = require('sequelize');
+const { Model, Sequelize } = require('sequelize');
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = (sequelize, DataTypes) => {
-  class Event extends Model {
-
-    static associate(models) {
-        Event.belongsTo(models.User, {
-        as: "creator",
-        foreignKey: 'creatorId',
-        targetKey: 'id'
-      })
-
-    }
-  }
 
   Event.init({
     id: {
-      type: DataTypes.UUID,
-      allowNull: false,
       primaryKey: true,
-      defaultValue: uuidv4()
-    },
-    creatorId: {
       type: DataTypes.UUID,
-      allowNull: false
+      defaultValue: Sequelize.UUIDV4,
+      allowNull: false,
     },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-        len: [5,60]
-      }
     },
     desc: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        notEmpty: true,
-        len: [5,60]
-      }
-    },
-    placeId: {
-      type: DataTypes.STRING,
-      allowNull: false
     },
     address: {
       type: DataTypes.STRING,
@@ -56,13 +29,13 @@ module.exports = (sequelize, DataTypes) => {
     },
     lat: {
         type: DataTypes.DECIMAL,
-        allowNull: false,
+        allowNull: true,
         min: -90,
         max: 90
     },
-    lng: {
+    long: {
         type: DataTypes.DECIMAL,
-        allowNull: false,
+        allowNull: true,
         min: -180,
         max: 180
     },

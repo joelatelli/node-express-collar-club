@@ -14,7 +14,12 @@ const dbOptions = {
 let db = {};
 let sequelize;
 
-// sequelize = new Sequelize(dbConfig.database, dbConfig.username, dbConfig.password, dbOptions);
+// if (config.use_env_variable) {
+//   sequelize = new Sequelize(process.env[config.use_env_variable], config);
+// } else {
+//   sequelize = new Sequelize(config.database, config.username, config.password, config);
+// }
+
 sequelize = new Sequelize(process.env.DATABASE_URL, {
     dialect: 'postgres',
     protocol: 'postgres',
@@ -24,7 +29,7 @@ sequelize = new Sequelize(process.env.DATABASE_URL, {
             rejectUnauthorized: false
         }
     }
-});
+})
 
 fs.readdirSync(__dirname)
   .filter((file) => {
@@ -41,9 +46,9 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-sequelize.sync({ force: true }).then(() => {
-  console.log('Database & tables created!');
-});
+// sequelize.sync({ force: true }).then(() => {
+//   console.log('Database & tables created!');
+// });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

@@ -12,6 +12,18 @@ const defaultRoutes = [
     path: '/users',
     route: require('./user.routes'),
   },
+  {
+    path: '/products',
+    route: require('./products.routes'),
+  },
+  {
+    path: '/events',
+    route: require('./events.routes'),
+  },
+  {
+    path: '/profiles',
+    route: require('./profiles.routes'),
+  },
 ];
 
 defaultRoutes.forEach((route) => {

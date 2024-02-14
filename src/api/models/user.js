@@ -17,6 +17,24 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
   }
+  // class User extends Model {
+
+  //   static associate(models) {
+
+  //     User.hasMany(models.Event, {
+  //       onDelete: 'CASCADE',
+  //       foreignKey: 'userId',
+  //       sourceKey: 'id'
+  //     })
+
+  //     User.hasOne(models.UserSettings, {
+  //       onDelete: 'CASCADE',
+  //       foreignKey: 'userId',
+  //       sourceKey: 'id'
+  //     })
+
+  //   }
+  // }
   User.init(
     {
       id: {
