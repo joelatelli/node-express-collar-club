@@ -12,5 +12,15 @@ module.exports = (productService) => {
     }
   });
 
+  // Post route for saving player name and score
+  router.post("/api/player", function (req, res) {
+    db.Scores.create({
+      player: req.body.player,
+      score: req.body.score
+    }).then(function (dbPlayer) {
+      res.json(dbPlayer);
+    });
+  });
+
   return router;
 };
