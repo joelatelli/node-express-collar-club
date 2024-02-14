@@ -55,13 +55,13 @@ const getByPhone = async (phone, requiredFields = null) => {
 };
 
 const createNewUser = async (payload) => {
-  if (!payload.roleId) {
-    const role = await Role.findOne({ where: { name: 'user' } });
-    if (!role) {
-      throw CustomErrors.NotFoundError('Role not found');
-    }
-    payload.roleId = role.id;
-  }
+//   if (!payload.roleId) {
+//     const role = await Role.findOne({ where: { name: 'user' } });
+//     if (!role) {
+//       throw CustomErrors.NotFoundError('Role not found');
+//     }
+//     payload.roleId = role.id;
+//   }
   const user = await User.create(payload);
   return user;
 };
