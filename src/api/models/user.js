@@ -15,26 +15,14 @@ module.exports = (sequelize, DataTypes) => {
         as: 'tokens',
         onDelete: 'CASCADE',
       });
+      this.hasMany(models.PetProfile, {
+        foreignKey: 'userId',
+        as: 'profiles',
+        onDelete: 'CASCADE',
+      });
     }
   }
-  // class User extends Model {
-
-  //   static associate(models) {
-
-  //     User.hasMany(models.Event, {
-  //       onDelete: 'CASCADE',
-  //       foreignKey: 'userId',
-  //       sourceKey: 'id'
-  //     })
-
-  //     User.hasOne(models.UserSettings, {
-  //       onDelete: 'CASCADE',
-  //       foreignKey: 'userId',
-  //       sourceKey: 'id'
-  //     })
-
-  //   }
-  // }
+  
   User.init(
     {
       id: {

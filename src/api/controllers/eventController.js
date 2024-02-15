@@ -7,6 +7,20 @@ const createEvent = asyncWrapper(async (req, res, next) => {
     return successResponse(res, statusCode.CREATED, event, 'Event Created Successfully');
 });
 
+const register = asyncWrapper(async (req, res, next) => {
+    const event = await eventService.createNewEvent(req.body);
+    const userData = omit(user.toJSON(), omitUserFields);
+    const tokens = await tokenService.generateAuthTokens(userData);
+    const otp = await authService.createOTP(user);
+    // todo: send otp
+    return successResponse(
+      res,
+      statusCode.CREATED,
+      { userData, tokens, temp: { otp } },
+      'User Created Successfully'
+    );
+});
+
 const getEvents = asyncWrapper(async (req, res, next) => {
   const events = await eventService.getEvents(req.query);
   return successResponse(res, 200, events, 'Events Retrieved Successfully');
