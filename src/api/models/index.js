@@ -11,6 +11,7 @@ const dbOptions = {
   logging: false,
 };
 
+
 let db = {};
 let sequelize;
 
@@ -46,9 +47,9 @@ Object.keys(db).forEach((modelName) => {
   }
 });
 
-sequelize.sync({ force: true }).then(() => {
-  console.log('Database & tables created!');
-});
+// sequelize.sync({ force: true }).then(() => {
+//   console.log('Database & tables created!');
+// });
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
